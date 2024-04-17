@@ -15,7 +15,7 @@ const {response: name} = await chain.call({
     input: `Znajdź imię, które jest zawarte w zdaniu. Zdanie: "${task.question}?". Wyświetl to imię i NIC więcej - bez dodatkowych słów i kropki na końcu.`
 });
 console.log(name)
-const filteredData = task.input?.filter(s => s.includes(name));
+const filteredData =  (task.input as string[])?.filter(s => s.includes(name));
 console.log(filteredData)
 const {response: answer} = await chain.call({
     input: `
