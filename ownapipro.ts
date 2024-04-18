@@ -1,23 +1,27 @@
 import {AiDevsClient} from "./ai_devs_client.ts";
-import {ChatOpenAI} from "@langchain/openai";
+import {ChatOpenAI, OpenAI} from "@langchain/openai";
 import {HumanMessage} from "langchain/schema";
+import {ConversationChain} from "langchain/chains";
 
 interface QuestionRequest {
     question: string;
 }
 
-const aiDevsClient = await AiDevsClient.build("ownapi");
+const aiDevsClient = await AiDevsClient.build("ownapipro");
 const task = await aiDevsClient.getTaskMessage();
 console.log(task)
 
+const chain = new ConversationChain({
+    llm: new OpenAI({
+        modelName: "gpt-3.5-turbo"
+    })
+});
+
 const answer = async (question: string) => {
-    const model = new ChatOpenAI({
-        modelName: "gpt-3.5-turbo",
+    const {response: answerAsString} = await chain.call({
+        input: question
     });
-    const result = await model.invoke([
-        new HumanMessage(`Odpowiedz na pytanie najkrócej jak potrafisz: ${question}`)
-    ]);
-    return result.content.toString()
+    return answerAsString
 }
 
 
