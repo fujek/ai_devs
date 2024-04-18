@@ -39,4 +39,4 @@ Bun.serve({
     },
 });
 
-await aiDevsClient.sendAnswer()
+await aiDevsClient.sendAnswer('https://403a-78-10-207-208.ngrok-free.app/api')
