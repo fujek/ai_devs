@@ -26,8 +26,9 @@ Bun.serve({
         console.log(req)
         if (req.url.endsWith('/api') && req.method === 'POST') {
             const {question} = await req.json() as QuestionRequest;
-            console.log(question)
+            console.log('USER', question)
             const reply = await answer(question)
+            console.log('SYSTEM:',reply)
             return Response.json({reply})
         }
         return Response.error();
