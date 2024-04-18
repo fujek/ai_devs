@@ -1,6 +1,5 @@
 import {AiDevsClient} from "./ai_devs_client.ts";
-import {ChatOpenAI, OpenAI} from "@langchain/openai";
-import {HumanMessage} from "langchain/schema";
+import {OpenAI} from "@langchain/openai";
 import {ConversationChain} from "langchain/chains";
 
 interface QuestionRequest {
