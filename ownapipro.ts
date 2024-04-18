@@ -16,6 +16,8 @@ const chain = new ConversationChain({
     })
 });
 
+
+
 const answer = async (question: string) => {
     const {response: answerAsString} = await chain.call({
         input: question
@@ -23,6 +25,7 @@ const answer = async (question: string) => {
     return answerAsString
 }
 
+await answer('Udzielaj mi jak najkrótszych odpowiedzi.')
 
 Bun.serve({
     async fetch(req) {
