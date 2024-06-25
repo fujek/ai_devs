@@ -1,15 +1,5 @@
-# ai_devs
+# Notes
 
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.0.35. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Emergencja - pojawianie się zachowań nieobecnych w przypadku mniejszych modeli. 
+Przykładem może być zdolność do tłumaczeń z jednego języka na inny, pomimo tego, że model nie był dokładnie do tego trenowany 
+(ale oczywiście miał kontakt z tymi językami).

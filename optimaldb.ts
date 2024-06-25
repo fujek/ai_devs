@@ -17,6 +17,7 @@ console.log(dataResponse)
 const model = new ChatOpenAI({
     modelName: "gpt-3.5-turbo",
 });
+const start = performance.now();
 const result = await model.invoke([
     new SystemMessage(`
 In this exercise, you are required to reduce the size of a given JSON which contains details for various people (person_name_1, person_name_2, etc.). 
@@ -42,14 +43,10 @@ Remember that the goal is to achieve brevity without compromising on clarity. Go
     ),
     new HumanMessage(`${JSON.stringify(dataResponse)}`)
 ]);
+console.log(`Request to OpenAPI took ${(performance.now() - start)/1000} ms.`)
 const content = result.content;
 console.log(content)
 console.log(new Blob([content as string]).size)
-
-// console.log(new Blob([""]).size)
-// console.log(new Blob(["ą"]).size)
-// console.log(new Blob(["ąą"]).size)
-// console.log(new Blob(["ą "]).size)
 
 
 await aiDevsClient.sendAnswer(content)
